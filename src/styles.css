@@ -2,6 +2,11 @@
 
 @import url('https://rsms.me/inter/inter.css');
 
+a {
+  border-bottom-width: 1px;
+  border-bottom-style: dotted;
+}
+
 @tailwind components;
 
 @tailwind utilities;

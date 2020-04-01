@@ -1,20 +1,24 @@
 import React from "react"
+import Show from "../common/show"
 import styled from "styled-components"
 import { FaChevronDown as ChevronDownIcon } from "react-icons/fa"
 import { TiLocation as LocationIcon } from "react-icons/ti"
 
 const Cover = styled.section`
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
   background-image: url(main-1920.jpg);
 
   background-color: rgba(0, 0, 0, .25);
   background-blend-mode: multiply;
 `
 
-const LandingPage = ({ groups }) => {
+const LandingPage = ({ groups, alert }) => {
   return (
     <div>
+      <Show show={alert}>
+        {alert}
+      </Show>
       <Cover className="h-screen flex items-center text-white">
         <div className="flex flex-col items-center mx-auto">
           <div className="font-bold uppercase tracking-wider text-3xl sm:text-6xl mb-6">Loved, Loving.</div>
@@ -36,25 +40,27 @@ const LandingPage = ({ groups }) => {
           and love the world, for Jesus' sake.</strong>
         </div>
       </section>
-      <section className="py-8 sm:py-16 px-1 text-center sm:text-lg md:text-xl">
-        <p className="max-w-2xl mx-auto">
-          Want to know more about our church? Check out some of the groups
-          within our church that may interest you.
-        </p>
+      <Show show={groups.length > 0 }>
+        <section className="py-8 sm:py-16 px-1 text-center sm:text-lg md:text-xl">
+          <p className="max-w-2xl mx-auto">
+            Want to know more about our church? Check out some of the groups
+            within our church that may interest you.
+          </p>
 
-        <ul className="container mx-auto mt-8 sm:mt-16 flex flex-wrap md:text-lg">
-          {groups.map((group, index) => (
-            <li key={index} className="flex flex-col mb-8 sm:mb-16 sm:w-1/2 md:w-1/3 mx-auto">
-              <img
-                className="rounded-full w-48 h-48 mx-auto mb-4"
-                src={group.displayPicUrl}
-                alt={`display picture for ${group.name}`}
-              />
-              <p>{group.name}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
+          <ul className="container mx-auto mt-8 sm:mt-16 flex flex-wrap md:text-lg">
+            {groups.map((group, index) => (
+              <li key={index} className="flex flex-col mb-8 sm:mb-16 sm:w-1/2 md:w-1/3 mx-auto">
+                <img
+                  className="rounded-full w-48 h-48 mx-auto mb-4"
+                  src={group.displayPicUrl}
+                  alt={`display picture for ${group.name}`}
+                />
+                <p>{group.name}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </Show>
     </div>
   )
 }

@@ -593,6 +593,11 @@ video {
 
 @import url('https://rsms.me/inter/inter.css');
 
+a {
+  border-bottom-width: 1px;
+  border-bottom-style: dotted;
+}
+
 .container {
   width: 100%;
 }
