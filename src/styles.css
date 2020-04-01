@@ -1,0 +1,7 @@
+@tailwind base;
+
+@import url('https://rsms.me/inter/inter.css');
+
+@tailwind components;
+
+@tailwind utilities;
