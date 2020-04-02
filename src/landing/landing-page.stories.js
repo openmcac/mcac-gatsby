@@ -1,4 +1,4 @@
-import "../tailwind.css"
+import "../tailwind.generated.css"
 import LandingPage from "./landing-page"
 import React from 'react';
 

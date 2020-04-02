@@ -1,6 +1,6 @@
 import LandingPage from "./landing-page"
 import React from "react"
-import { render, fireEvent } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 describe("Landing Page", () => {
   it("shows the correct data", () => {
@@ -19,7 +19,7 @@ describe("Landing Page", () => {
       },
     ]
 
-    const { container, getByAltText, getByText } = render(<LandingPage groups={groups} />)
+    const { container, getByAltText, getByText, debug } = render(<LandingPage groups={groups} />)
 
     expect(getByText(/Loved, Loving./i)).toBeInTheDocument()
     expect(getByText(/13 Finchley/i)).toBeInTheDocument()
@@ -32,5 +32,12 @@ describe("Landing Page", () => {
       expect(container.querySelector(`[src="${group.displayPicUrl}"]`))
         .toBeInTheDocument()
     })
+  })
+
+  it("renders an alert when provided", () => {
+    const alert = <div>This is an emergency</div>
+    const { container, getByText } = render(<LandingPage groups={[]} alert={alert} />)
+
+    expect(getByText(/emergency/i)).toBeInTheDocument()
   })
 })
