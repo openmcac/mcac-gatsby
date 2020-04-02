@@ -34,7 +34,7 @@ const Announcements = styled.section`
 const Service = ({ service }) => {
   const serviceOrderRenderers = {
     listItem: ({ children }) => <li className="mb-10 text-sm md:text-xl">{children}</li>,
-    strong: ({ children }) => <strong className="text-xl sm:text-2xl font-medium">{children}</strong>,
+    strong: ({ children }) => <strong className="text-xl sm:text-2xl font-medium text-gray-900">{children}</strong>,
     link: props => <a {...props} className="border-gray-700 text-black" />,
   }
 
@@ -59,7 +59,7 @@ const Service = ({ service }) => {
       </Background>
       <section className="max-w-2xl mx-auto -mt-12 mb-32">
         <HeaderIcon className="ml-4">📄</HeaderIcon>
-        <div className="text-center mt-6">
+        <div className="text-center mt-6 text-gray-600">
           <Markdown source={service.order} renderers={serviceOrderRenderers} />
         </div>
       </section>
