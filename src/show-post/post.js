@@ -4,9 +4,33 @@ import Markdown from "react-markdown"
 import Moment from "react-moment"
 import React from "react"
 import Show from "../common/show"
+import gql from "graphql-tag"
 import { FaCertificate as FooterIcon } from "react-icons/fa"
 import { Link } from "@reach/router"
 import { groupRoute, postRoute } from "../common/url-helper"
+import { useQuery } from "@apollo/react-hooks"
+
+const FETCH_POST = gql`
+  query showPost($id: ID!) {
+    post(id: $id) {
+      id
+      title
+      content
+      publishedAt
+      bannerUrl
+      kind
+      slug
+
+      group {
+        id
+        name
+        slug
+        bannerUrl
+        profilePictureUrl
+      }
+    }
+  }
+`
 
 const Metadata = ({ post, group }) => {
   const publishedAt = new Date(post.publishedAt)
@@ -35,7 +59,19 @@ const Metadata = ({ post, group }) => {
   )
 }
 
-const Post = ({ post, group }) => {
+const Post = ({ id }) => {
+  const { data, loading, error } = useQuery(FETCH_POST, { variables: { id } })
+
+  if (loading || error) {
+    return true
+  }
+
+  const { post } = data
+
+  return <Post.Content post={post} group={post.group} />
+}
+
+Post.Content = ({ post, group }) => {
   const renderers = {
     paragraph: ({ children }) => <p className="mb-4 lg:mb-6">{children}</p>,
     listItem: ({ children }) => <li className="ml-6">{children}</li>,

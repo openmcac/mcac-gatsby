@@ -1,4 +1,4 @@
-import pathToRegexp from "path-to-regexp"
+import { pathToRegexp } from "path-to-regexp"
 import queryString from "query-string"
 import update from "immutability-helper"
 
