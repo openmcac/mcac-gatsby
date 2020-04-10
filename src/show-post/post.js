@@ -1,3 +1,4 @@
+import "moment-timezone"
 import Banner from "../common/banner"
 import Markdown from "react-markdown"
 import Moment from "react-moment"
@@ -25,7 +26,7 @@ const Metadata = ({ post, group }) => {
         <Link
           className="border-0"
           to={postRoute.url({ group: group.slug, year: publishedAt.getFullYear(), month: publishedAt.getMonth() + 1, day: publishedAt.getDate(), id: post.id, slug: post.slug })}>
-          <Moment className="text-gray-500" format="MMMM Do YYYY [at] h:mma">
+          <Moment className="text-gray-500" format="MMMM Do YYYY [at] h:mma" tz="America/Montreal">
             {post.publishedAt}
           </Moment>
         </Link>
