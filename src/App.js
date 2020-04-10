@@ -1,7 +1,9 @@
+import "antd/dist/antd.css"
 import "./tailwind.generated.css"
 import ApolloClient from 'apollo-boost'
 import GroupProfile from "./show-group/profile"
 import LandingPage from "./landing/landing-page"
+import MainLayout from "./layouts/main"
 import Post from "./show-post/post"
 import React from "react"
 import { ApolloProvider } from "@apollo/react-hooks"
@@ -12,13 +14,13 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      <div>
+      <MainLayout>
         <Router>
           <LandingPage path="/" />
           <GroupProfile path="/:slug" />
           <Post path="/:group/:year/:month/:day/:id/:slug" />
         </Router>
-      </div>
+      </MainLayout>
     </ApolloProvider>
   )
 }

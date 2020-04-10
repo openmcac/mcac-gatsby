@@ -1,3 +1,4 @@
+import Loading from "../common/loading"
 import React from "react"
 import Show from "../common/show"
 import gql from "graphql-tag"
@@ -5,8 +6,8 @@ import styled from "styled-components"
 import { FaChevronDown as ChevronDownIcon } from "react-icons/fa"
 import { Link } from "@reach/router"
 import { TiLocation as LocationIcon } from "react-icons/ti"
-import { useQuery } from "@apollo/react-hooks"
 import { groupRoute } from "../common/url-helper"
+import { useQuery } from "@apollo/react-hooks"
 
 const Cover = styled.section`
   background-size: cover;
@@ -31,7 +32,7 @@ const LOAD_GROUPS = gql`
 const LandingPage = () => {
   const { data, loading, error } = useQuery(LOAD_GROUPS)
   if (loading || error) {
-    return null
+    return <Loading />
   }
 
   const { groups } = data

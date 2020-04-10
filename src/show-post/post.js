@@ -1,5 +1,6 @@
 import "moment-timezone"
 import Banner from "../common/banner"
+import Loading from "../common/loading"
 import Markdown from "react-markdown"
 import Moment from "react-moment"
 import React from "react"
@@ -63,7 +64,7 @@ const Post = ({ id }) => {
   const { data, loading, error } = useQuery(FETCH_POST, { variables: { id } })
 
   if (loading || error) {
-    return true
+    return <Loading />
   }
 
   const { post } = data

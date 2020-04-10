@@ -1,8 +1,9 @@
 import Header from "../groups/header"
+import Loading from "../common/loading"
 import Post from "../show-post/post"
 import React from "react"
-import { useQuery } from "@apollo/react-hooks"
 import gql from "graphql-tag"
+import { useQuery } from "@apollo/react-hooks"
 
 const LOAD_GROUP = gql`
   query groupProfile($slug: String!) {
@@ -37,7 +38,7 @@ const Profile = ({ slug }) => {
   const { data, error, loading } = useQuery(LOAD_GROUP, { variables: { slug } })
 
   if (error || loading) {
-    return null
+    return <Loading />
   }
 
   const { group } = data
