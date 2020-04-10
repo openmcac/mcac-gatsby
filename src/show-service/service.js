@@ -1,3 +1,4 @@
+import "moment-timezone"
 import Markdown from "react-markdown"
 import Moment from "react-moment"
 import React from "react"
@@ -52,7 +53,14 @@ const Service = ({ service }) => {
           <div className="mx-auto text-white h-56 sm:h-64 md:h-128 xl:h-256 flex items-center">
             <div className="mx-auto">
               <div className="bg-white text-gray-900 px-2 font-semibold tracking-wide text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl sm:tracking-wider mb-3 md:mb-6 lg:mb-8">{service.name}</div>
-              <div className="text-center text-sm sm:text-base md:text-lg lg:text-xl"><Moment className="bg-white text-gray-900 px-2 py-1" format="MMMM Do YYYY [at] h:mm a">{service.publishedAt}</Moment></div>
+              <div className="text-center text-sm sm:text-base md:text-lg lg:text-xl">
+                <Moment
+                  className="bg-white text-gray-900 px-2 py-1"
+                  format="MMMM Do YYYY [at] h:mm a"
+                  tz="America/Montreal">
+                  {service.publishedAt}
+                </Moment>
+              </div>
             </div>
           </div>
         </Header>
