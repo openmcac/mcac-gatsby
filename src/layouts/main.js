@@ -4,7 +4,7 @@ import React from "react"
 
 const Main = ({ children }) => {
   return (
-    <div>
+    <div className="font-sans text-base text-gray-900">
       <div className="absolute w-full">
         <Header />
       </div>

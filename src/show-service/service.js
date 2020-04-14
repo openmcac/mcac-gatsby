@@ -1,9 +1,12 @@
 import "moment-timezone"
+import Loading from "../common/loading"
 import Markdown from "react-markdown"
 import Moment from "react-moment"
 import React from "react"
+import gql from "graphql-tag"
 import styled from "styled-components"
 import { IoMdPaper as PaperIcon } from "react-icons/io"
+import { useQuery } from "@apollo/react-hooks"
 
 const Header = styled.section`
   background-image: url(/sanctuary.png);
@@ -32,7 +35,35 @@ const Announcements = styled.section`
   background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f7fafc' fill-opacity='0.4'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 `
 
-const Service = ({ service }) => {
+const FETCH_SERVICE = gql`
+  query service($id: ID!) {
+    service(id: $id) {
+      id
+      name
+      serviceOrder
+      sermonNotes
+      publishedAt
+      announcements {
+        id
+        description
+      }
+    }
+  }
+`
+
+const Service = ({ id }) => {
+  const { loading, error, data } = useQuery(FETCH_SERVICE, { variables: { id } })
+
+  if (loading || error) {
+    return <Loading />
+  }
+
+  const { service } = data
+
+  return <Service.Contents service={service} />
+}
+
+Service.Contents = ({ service }) => {
   const serviceOrderRenderers = {
     listItem: ({ children }) => <li className="mb-10 text-sm md:text-xl">{children}</li>,
     strong: ({ children }) => <strong className="text-xl sm:text-2xl font-medium text-gray-900">{children}</strong>,
@@ -68,7 +99,7 @@ const Service = ({ service }) => {
       <section className="max-w-2xl mx-auto -mt-12 mb-32">
         <HeaderIcon className="ml-4">📄</HeaderIcon>
         <div className="text-center mt-6 text-gray-600">
-          <Markdown source={service.order} renderers={serviceOrderRenderers} />
+          <Markdown source={service.serviceOrder} renderers={serviceOrderRenderers} />
         </div>
       </section>
       <Announcements className="border-t border-gray-200 bg-black text-gray-800 pb-12">

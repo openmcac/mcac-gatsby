@@ -96,7 +96,7 @@ Post.Content = ({ post, group }) => {
           <Metadata post={post} group={group} />
         </div>
         <div className="mx-2 text-gray-900 md:text-lg">
-          <Markdown source={post.content} renderers={renderers} />
+          <Markdown source={post.content} renderers={renderers} escapeHtml={false} />
         </div>
         <div className="text-gray-200 text-2xl mt-12 sm:mt-16 md:mt-20 mb-24 sm:mb-32 md:mb-40"><FooterIcon className="mx-auto" /></div>
       </div>

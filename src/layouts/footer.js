@@ -4,7 +4,7 @@ import logo from "./logo.png"
 
 const Footer = () => {
   return (
-    <div className="text-center text-gray-500">
+    <div className="text-center text-gray-500 mt-24">
       <img src={logo} className="object-contain w-12 mx-auto mb-6 opacity-25" />
       <p className="uppercase tracking-widest text-sm">Montreal Chinese Alliance Church</p>
       <p className="text-sm">
