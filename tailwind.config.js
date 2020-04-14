@@ -11,6 +11,8 @@ module.exports = {
       }
     },
   },
-  variants: {},
+  variants: {
+    textColor: ["hover"],
+  },
   plugins: [],
 }

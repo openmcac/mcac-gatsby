@@ -103,6 +103,7 @@ Service.Contents = ({ service }) => {
         </div>
       </section>
       <Announcements className="border-t border-gray-200 bg-black text-gray-800 pb-12">
+        <a name="announcements" />
         <div className="max-w-2xl mx-auto">
           <HeaderIcon className="absolute ml-4 -mt-12">🗓</HeaderIcon>
           <h2 className="pt-16 ml-3 text-xl sm:text-3xl font-bold mb-6">
