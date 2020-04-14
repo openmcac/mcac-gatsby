@@ -7,6 +7,7 @@ import MainLayout from "./layouts/main"
 import Post from "./show-post/post"
 import React from "react"
 import Service from "./show-service/service"
+import Sunday from "./show-service/sunday"
 import { ApolloProvider } from "@apollo/react-hooks"
 import { Router } from "@reach/router"
 
@@ -21,6 +22,7 @@ function App() {
           <GroupProfile path="/:slug" />
           <Post path="/:group/:year/:month/:day/:id/:slug" />
           <Service path="/:group/bulletin/:id" />
+          <Sunday path="/sunday" />
         </Router>
       </MainLayout>
     </ApolloProvider>
