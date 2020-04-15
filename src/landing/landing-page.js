@@ -74,11 +74,16 @@ LandingPage.Contents = ({ groups }) => {
             {groups.map((group, index) => (
               <li key={index} className="flex flex-col mb-8 sm:mb-16 sm:w-1/2 md:w-1/3 mx-auto">
                 <Link to={groupRoute.url({ slug: group.slug })} className="border-0">
-                  <img
-                    className="rounded-full object-cover w-48 h-48 mx-auto mb-4"
-                    src={group.profilePictureUrl}
-                    alt={group.name}
-                  />
+                  <Show show={group.profilePictureUrl}>
+                    <img
+                      className="bg-gray-200 rounded-full object-cover w-48 h-48 mx-auto mb-4"
+                      src={group.profilePictureUrl}
+                      alt={group.name}
+                    />
+                  </Show>
+                  <Show show={!group.profilePictureUrl}>
+                    <div className="bg-gray-200 rounded-full object-cover w-48 h-48 mx-auto mb-4" />
+                  </Show>
                   <p>{group.name}</p>
                 </Link>
               </li>
