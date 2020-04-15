@@ -6,7 +6,7 @@ describe("Showing a service", () => {
   it("shows the service", () => {
     const service = {
       name: "Sunday Worship Service",
-      order: `- **Call to Worship**
+      serviceOrder: `- **Call to Worship**
  - **Praise & Worship**
  - **Pray with our Children**
  - **[Announcements](#announcements)**
@@ -25,7 +25,7 @@ describe("Showing a service", () => {
       ],
     }
 
-    const { getByText, container, debug } = render(<Service service={service} />)
+    const { getByText, container, debug } = render(<Service.Contents service={service} />)
 
     expect(getByText("Sunday Worship Service")).toBeInTheDocument()
     expect(getByText("March 22nd 2020 at 9:30 am")).toBeInTheDocument()

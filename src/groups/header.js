@@ -30,6 +30,7 @@ const Header = ({ group }) => {
         <img
           src={group.profilePictureUrl}
           className="w-32 h-32 rounded-full border-2 border-white -mt-12 ml-2"
+          alt={group.name}
         />
         <div className="font-bold text-xl my-2">{group.name}</div>
         <div>{group.shortDescription}</div>

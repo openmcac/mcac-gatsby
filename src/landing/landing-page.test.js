@@ -7,19 +7,19 @@ describe("Landing Page", () => {
     const groups = [
       {
         name: "Group 1",
-        displayPicUrl: "https://picsum.photos/300/300",
+        profilePictureUrl: "https://picsum.photos/300/300",
       },
       {
         name: "Group 2",
-        displayPicUrl: "https://picsum.photos/300/300",
+        profilePictureUrl: "https://picsum.photos/300/300",
       },
       {
         name: "Group 3",
-        displayPicUrl: "https://picsum.photos/300/300",
+        profilePictureUrl: "https://picsum.photos/300/300",
       },
     ]
 
-    const { container, getByAltText, getByText, debug } = render(<LandingPage groups={groups} />)
+    const { container, getByAltText, getByText, debug } = render(<LandingPage.Contents groups={groups} />)
 
     expect(getByText(/Loved, Loving./i)).toBeInTheDocument()
     expect(getByText(/13 Finchley/i)).toBeInTheDocument()
@@ -29,15 +29,8 @@ describe("Landing Page", () => {
 
     groups.forEach(group => {
       expect(getByText(group.name)).toBeInTheDocument()
-      expect(container.querySelector(`[src="${group.displayPicUrl}"]`))
+      expect(container.querySelector(`[src="${group.profilePictureUrl}"]`))
         .toBeInTheDocument()
     })
-  })
-
-  it("renders an alert when provided", () => {
-    const alert = <div>This is an emergency</div>
-    const { container, getByText } = render(<LandingPage groups={[]} alert={alert} />)
-
-    expect(getByText(/emergency/i)).toBeInTheDocument()
   })
 })

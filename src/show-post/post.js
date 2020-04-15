@@ -1,12 +1,37 @@
 import "moment-timezone"
 import Banner from "../common/banner"
+import Loading from "../common/loading"
 import Markdown from "react-markdown"
 import Moment from "react-moment"
 import React from "react"
 import Show from "../common/show"
+import gql from "graphql-tag"
 import { FaCertificate as FooterIcon } from "react-icons/fa"
 import { Link } from "@reach/router"
 import { groupRoute, postRoute } from "../common/url-helper"
+import { useQuery } from "@apollo/react-hooks"
+
+const FETCH_POST = gql`
+  query showPost($id: ID!) {
+    post(id: $id) {
+      id
+      title
+      content
+      publishedAt
+      bannerUrl
+      kind
+      slug
+
+      group {
+        id
+        name
+        slug
+        bannerUrl
+        profilePictureUrl
+      }
+    }
+  }
+`
 
 const Metadata = ({ post, group }) => {
   const publishedAt = new Date(post.publishedAt)
@@ -16,6 +41,7 @@ const Metadata = ({ post, group }) => {
       <img
         className="rounded-full h-16 md:h-20 w-16 md:w-20"
         src={group.profilePictureUrl}
+        alt=""
       />
       <div className="ml-2 text-sm md:text-base">
         <div className="font-semibold tracking-wide text-gray-700">
@@ -35,11 +61,24 @@ const Metadata = ({ post, group }) => {
   )
 }
 
-const Post = ({ post, group }) => {
+const Post = ({ id }) => {
+  const { data, loading, error } = useQuery(FETCH_POST, { variables: { id } })
+
+  if (loading || error) {
+    return <Loading />
+  }
+
+  const { post } = data
+
+  return <Post.Contents post={post} group={post.group} />
+}
+
+Post.Contents = ({ post, group }) => {
   const renderers = {
     paragraph: ({ children }) => <p className="mb-4 lg:mb-6">{children}</p>,
     listItem: ({ children }) => <li className="ml-6">{children}</li>,
     list: ({ children }) => <ul className="list-disc mb-4 lg:mb-6">{children}</ul>,
+    // eslint-disable-next-line
     link: props => <a {...props} className="border-gray-700 text-black" />,
   }
 
@@ -59,7 +98,7 @@ const Post = ({ post, group }) => {
           <Metadata post={post} group={group} />
         </div>
         <div className="mx-2 text-gray-900 md:text-lg">
-          <Markdown source={post.content} renderers={renderers} />
+          <Markdown source={post.content} renderers={renderers} escapeHtml={false} />
         </div>
         <div className="text-gray-200 text-2xl mt-12 sm:mt-16 md:mt-20 mb-24 sm:mb-32 md:mb-40"><FooterIcon className="mx-auto" /></div>
       </div>

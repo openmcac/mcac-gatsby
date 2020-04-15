@@ -2,7 +2,7 @@ import "../tailwind.generated.css"
 import Post from "./post"
 import React from 'react';
 
-export default { title: "Show Post/Post", component: Post }
+export default { title: "Show Post/Post", component: Post.Contents }
 
 export const defaultState = () => {
   const post = {
@@ -42,7 +42,7 @@ the finance department.`,
   }
 
   return (
-    <Post post={post} group={post.group} />
+    <Post.Contents post={post} group={post.group} />
   )
 }
 
@@ -84,7 +84,7 @@ the finance department.`,
   }
 
   return (
-    <Post post={post} group={post.group} />
+    <Post.Contents post={post} group={post.group} />
   )
 }
 
@@ -126,7 +126,7 @@ the finance department.`,
   }
 
   return (
-    <Post post={post} group={post.group} />
+    <Post.Contents post={post} group={post.group} />
   )
 }
 

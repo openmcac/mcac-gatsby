@@ -1,8 +1,13 @@
+import Loading from "../common/loading"
 import React from "react"
 import Show from "../common/show"
+import gql from "graphql-tag"
 import styled from "styled-components"
 import { FaChevronDown as ChevronDownIcon } from "react-icons/fa"
+import { Link } from "@reach/router"
 import { TiLocation as LocationIcon } from "react-icons/ti"
+import { groupRoute } from "../common/url-helper"
+import { useQuery } from "@apollo/react-hooks"
 
 const Cover = styled.section`
   background-size: cover;
@@ -13,12 +18,30 @@ const Cover = styled.section`
   background-blend-mode: multiply;
 `
 
-const LandingPage = ({ groups, alert }) => {
+const LOAD_GROUPS = gql`
+  query landingPage {
+    groups {
+      id
+      slug
+      name
+      profilePictureUrl
+    }
+  }
+`
+
+const LandingPage = () => {
+  const { data, loading, error } = useQuery(LOAD_GROUPS)
+  if (loading || error) {
+    return <Loading />
+  }
+
+  const { groups } = data
+  return <LandingPage.Contents groups={groups} />
+}
+
+LandingPage.Contents = ({ groups }) => {
   return (
     <div>
-      <Show show={alert}>
-        {alert}
-      </Show>
       <Cover className="h-screen flex items-center text-white">
         <div className="flex flex-col items-center mx-auto">
           <div className="font-bold uppercase tracking-wider text-3xl sm:text-6xl mb-6">Loved, Loving.</div>
@@ -50,12 +73,14 @@ const LandingPage = ({ groups, alert }) => {
           <ul className="container mx-auto mt-8 sm:mt-16 flex flex-wrap md:text-lg">
             {groups.map((group, index) => (
               <li key={index} className="flex flex-col mb-8 sm:mb-16 sm:w-1/2 md:w-1/3 mx-auto">
-                <img
-                  className="rounded-full w-48 h-48 mx-auto mb-4"
-                  src={group.displayPicUrl}
-                  alt={`display picture for ${group.name}`}
-                />
-                <p>{group.name}</p>
+                <Link to={groupRoute.url({ slug: group.slug })} className="border-0">
+                  <img
+                    className="rounded-full object-cover w-48 h-48 mx-auto mb-4"
+                    src={group.profilePictureUrl}
+                    alt={group.name}
+                  />
+                  <p>{group.name}</p>
+                </Link>
               </li>
             ))}
           </ul>

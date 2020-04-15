@@ -1,6 +1,5 @@
-import pathToRegexp from "path-to-regexp"
 import queryString from "query-string"
-import update from "immutability-helper"
+import { pathToRegexp } from "path-to-regexp"
 
 class Route {
   constructor(template) {
@@ -32,24 +31,6 @@ class Route {
 }
 
 const buildRoute = template => new Route(template)
-
-const buildPreviewableRoute = template => {
-  const route = buildRoute(template)
-  const originalUrl = route.url
-
-  const url = (params = {}) => {
-    const normalizedParams =
-      params["preview"] === true || params["preview"] === "true"
-        ? params
-        : update(params, { $unset: ["preview"] })
-
-    return originalUrl(normalizedParams)
-  }
-
-  route.url = url
-
-  return route
-}
 
 export const groupRoute = buildRoute("/:slug")
 export const postRoute = buildRoute("/:group/:year/:month/:day/:id/:slug")

@@ -19,10 +19,12 @@ describe("Show Group/Profile", () => {
       shortDescription: "Worship service for the English congregation.",
       slug: "english-service",
       targetAudience: "Members and seekers",
-      posts,
+      posts: {
+        edges: posts.map(p => ({ node: p }))
+      },
     }
 
-    const { getByText } = render(<Profile group={group} />)
+    const { getByText } = render(<Profile.Contents group={group} />)
 
     expect(getByText(group.shortDescription)).toBeInTheDocument()
     posts.forEach(post => {
