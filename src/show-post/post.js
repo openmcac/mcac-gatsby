@@ -41,6 +41,7 @@ const Metadata = ({ post, group }) => {
       <img
         className="rounded-full h-16 md:h-20 w-16 md:w-20"
         src={group.profilePictureUrl}
+        alt=""
       />
       <div className="ml-2 text-sm md:text-base">
         <div className="font-semibold tracking-wide text-gray-700">
@@ -77,6 +78,7 @@ Post.Contents = ({ post, group }) => {
     paragraph: ({ children }) => <p className="mb-4 lg:mb-6">{children}</p>,
     listItem: ({ children }) => <li className="ml-6">{children}</li>,
     list: ({ children }) => <ul className="list-disc mb-4 lg:mb-6">{children}</ul>,
+    // eslint-disable-next-line
     link: props => <a {...props} className="border-gray-700 text-black" />,
   }
 

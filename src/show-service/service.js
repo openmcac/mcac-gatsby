@@ -5,7 +5,6 @@ import Moment from "react-moment"
 import React from "react"
 import gql from "graphql-tag"
 import styled from "styled-components"
-import { IoMdPaper as PaperIcon } from "react-icons/io"
 import { useQuery } from "@apollo/react-hooks"
 
 const Header = styled.section`
@@ -67,6 +66,7 @@ Service.Contents = ({ service }) => {
   const serviceOrderRenderers = {
     listItem: ({ children }) => <li className="mb-10 text-sm md:text-xl">{children}</li>,
     strong: ({ children }) => <strong className="text-xl sm:text-2xl font-medium text-gray-900">{children}</strong>,
+    // eslint-disable-next-line
     link: props => <a {...props} className="border-gray-700 text-black" />,
   }
 
@@ -74,6 +74,7 @@ Service.Contents = ({ service }) => {
     paragraph: ({ children }) => <p className="inline bg-white text-gray-900">{children}</p>,
     listItem: ({ children }) => <li className="ml-6">{children}</li>,
     list: ({ children }) => <ul className="list-disc text-gray-900">{children}</ul>,
+    // eslint-disable-next-line
     link: props => <a {...props} className="border-gray-700 text-black" />,
   }
 
@@ -97,15 +98,16 @@ Service.Contents = ({ service }) => {
         </Header>
       </Background>
       <section className="max-w-2xl mx-auto -mt-12 mb-32">
-        <HeaderIcon className="ml-4">📄</HeaderIcon>
+        <HeaderIcon className="ml-4">
+          <span role="img" aria-label="Service Order icon">📄</span>
+        </HeaderIcon>
         <div className="text-center mt-6 text-gray-600">
           <Markdown source={service.serviceOrder} renderers={serviceOrderRenderers} />
         </div>
       </section>
       <Announcements className="border-t border-gray-200 bg-black text-gray-800 pb-12">
-        <a name="announcements" />
         <div className="max-w-2xl mx-auto">
-          <HeaderIcon className="absolute ml-4 -mt-12">🗓</HeaderIcon>
+          <HeaderIcon className="absolute ml-4 -mt-12"><a className="border-0" name="announcements" href="#announcements">🗓</a></HeaderIcon>
           <h2 className="pt-16 ml-3 text-xl sm:text-3xl font-bold mb-6">
             <span className="bg-white text-gray-900 px-2 py-1">Announcements</span>
           </h2>

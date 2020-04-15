@@ -77,7 +77,7 @@ LandingPage.Contents = ({ groups }) => {
                   <img
                     className="rounded-full object-cover w-48 h-48 mx-auto mb-4"
                     src={group.profilePictureUrl}
-                    alt={`display picture for ${group.name}`}
+                    alt={group.name}
                   />
                   <p>{group.name}</p>
                 </Link>
