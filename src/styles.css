@@ -7,6 +7,10 @@ a {
   border-bottom-style: dotted;
 }
 
+a:hover {
+  color: black;
+}
+
 @tailwind components;
 
 @tailwind utilities;

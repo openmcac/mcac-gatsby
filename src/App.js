@@ -17,10 +17,10 @@ function App() {
     <div className="w-screen py-2 lg:py-4 text-sm bg-red-800 text-white border-b border-red-900">
       <div className="container px-2 text-center mx-auto">
         In support of{" "}
-        <a href="https://www.quebec.ca/en/health/health-issues/a-z/2019-coronavirus/">
+        <a className="hover:text-red-200 hover:border-red-200" href="https://www.quebec.ca/en/health/health-issues/a-z/2019-coronavirus/">
           Québec's COVID-19 directives
         </a>, our church building will be closed until further notice.{" "}
-        Our services can be <a href="http://live.mcac.church">streamed on Sundays</a> at 9:30am!
+        Our services can be <a className="hover:text-red-200 hover:border-red-200" href="http://live.mcac.church">streamed on Sundays</a> at 9:30am!
       </div>
     </div>
   )
