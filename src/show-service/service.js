@@ -60,7 +60,14 @@ const Service = ({ id }) => {
 
   const { service } = data
 
-  return <Service.Contents service={service} />
+  return (
+    <>
+      <Helmet>
+        <title>{service.name} | Montreal Chinese Alliance Church</title>
+      </Helmet>
+      <Service.Contents service={service} />
+    </>
+  )
 }
 
 Service.Contents = ({ service }) => {
@@ -81,9 +88,6 @@ Service.Contents = ({ service }) => {
 
   return (
     <div>
-      <Helmet>
-        <title>{service.name} | Montreal Chinese Alliance Church</title>
-      </Helmet>
       <Background>
         <Header className="max-w-6xl mx-auto">
           <div className="mx-auto text-white h-56 sm:h-64 md:h-128 xl:h-256 flex items-center">

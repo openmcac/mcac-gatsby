@@ -44,15 +44,19 @@ const Profile = ({ slug }) => {
 
   const { group } = data
 
-  return <Profile.Contents group={group} />
+  return (
+    <>
+      <Helmet>
+        <title>{group.name} | Montreal Chinese Alliance Church</title>
+      </Helmet>
+      <Profile.Contents group={group} />
+    </>
+  )
 }
 
 Profile.Contents = ({ group }) => {
   return (
     <div>
-      <Helmet>
-        <title>{group.name} | Montreal Chinese Alliance Church</title>
-      </Helmet>
       <Header group={group} />
 
       <div className="container mx-auto mt-12">
