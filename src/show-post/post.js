@@ -69,10 +69,10 @@ const Post = ({ id }) => {
 
   const { post } = data
 
-  return <Post.Content post={post} group={post.group} />
+  return <Post.Contents post={post} group={post.group} />
 }
 
-Post.Content = ({ post, group }) => {
+Post.Contents = ({ post, group }) => {
   const renderers = {
     paragraph: ({ children }) => <p className="mb-4 lg:mb-6">{children}</p>,
     listItem: ({ children }) => <li className="ml-6">{children}</li>,

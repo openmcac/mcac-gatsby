@@ -39,12 +39,9 @@ const LandingPage = () => {
   return <LandingPage.Contents groups={groups} />
 }
 
-LandingPage.Contents = ({ groups, alert }) => {
+LandingPage.Contents = ({ groups }) => {
   return (
     <div>
-      <Show show={alert}>
-        {alert}
-      </Show>
       <Cover className="h-screen flex items-center text-white">
         <div className="flex flex-col items-center mx-auto">
           <div className="font-bold uppercase tracking-wider text-3xl sm:text-6xl mb-6">Loved, Loving.</div>

@@ -2,7 +2,7 @@ import "../tailwind.generated.css"
 import Profile from "./profile"
 import React from 'react';
 
-export default { title: "Show Group/Profile", component: Profile }
+export default { title: "Show Group/Profile", component: Profile.Contents }
 
 export const defaultState = () => {
   const group = {
@@ -14,11 +14,13 @@ export const defaultState = () => {
     shortDescription: "Worship service for the English congregation.",
     slug: "english-service",
     targetAudience: "Members and seekers",
-    posts: [createPost(), createPost(), createPost()],
+    posts: {
+      edges: [createPost(), createPost(), createPost()].map(p => ({ node: p }))
+    }
   }
 
   return (
-    <Profile group={group} />
+    <Profile.Contents group={group} />
   )
 }
 

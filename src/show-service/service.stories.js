@@ -2,18 +2,18 @@ import "../tailwind.generated.css"
 import React from 'react';
 import Service from "./service"
 
-export default { title: "Show Service/Service", component: Service }
+export default { title: "Show Service/Service", component: Service.Contents }
 
 export const defaultState = () => {
   return (
-    <Service service={Fixtures.service} />
+    <Service.Contents service={Fixtures.service} />
   )
 }
 
 const Fixtures = {
   service: {
     name: "Sunday Worship Service",
-    order: `- **Call to Worship**
+    serviceOrder: `- **Call to Worship**
  - **Praise & Worship**
  - **Pray with our Children**
  - **[Announcements](#announcements)**

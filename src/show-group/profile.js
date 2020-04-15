@@ -54,7 +54,7 @@ Profile.Contents = ({ group }) => {
       <div className="container mx-auto mt-12">
         {group.posts.edges.map(({ node: post }) => (
           <div key={post.id} className="mt-6">
-            <Post.Content post={post} group={group} />
+            <Post.Contents post={post} group={group} />
           </div>
         ))}
       </div>

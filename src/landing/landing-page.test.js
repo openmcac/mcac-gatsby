@@ -33,11 +33,4 @@ describe("Landing Page", () => {
         .toBeInTheDocument()
     })
   })
-
-  it("renders an alert when provided", () => {
-    const alert = <div>This is an emergency</div>
-    const { container, getByText } = render(<LandingPage.Contents groups={[]} alert={alert} />)
-
-    expect(getByText(/emergency/i)).toBeInTheDocument()
-  })
 })

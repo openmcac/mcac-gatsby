@@ -26,7 +26,7 @@ describe("Post", () => {
   }
 
   it("shows posts' content", () => {
-    const { getByText, container } = render(<Post.Content post={post} group={post.group} />)
+    const { getByText, container } = render(<Post.Contents post={post} group={post.group} />)
     expect(getByText(post.title)).toBeInTheDocument()
     expect(getByText(/March 28th 2020 at 6:49pm/i)).toBeInTheDocument()
     expect(container.querySelector(`[href="http://example.com"]`)).toBeInTheDocument()
