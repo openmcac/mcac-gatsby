@@ -9,6 +9,7 @@ import React from "react"
 import Service from "./show-service/service"
 import Sunday from "./show-service/sunday"
 import { ApolloProvider } from "@apollo/react-hooks"
+import { Helmet } from "react-helmet"
 import { Router } from "@reach/router"
 
 function App() {
@@ -28,6 +29,9 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <MainLayout alert={alert}>
+        <Helmet>
+          <title>Montreal Chinese Alliance Church</title>
+        </Helmet>
         <Router>
           <LandingPage path="/" />
           <GroupProfile path="/:slug" />

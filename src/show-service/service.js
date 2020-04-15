@@ -5,6 +5,7 @@ import Moment from "react-moment"
 import React from "react"
 import gql from "graphql-tag"
 import styled from "styled-components"
+import { Helmet } from "react-helmet"
 import { useQuery } from "@apollo/react-hooks"
 
 const Header = styled.section`
@@ -80,6 +81,9 @@ Service.Contents = ({ service }) => {
 
   return (
     <div>
+      <Helmet>
+        <title>{service.name} | Montreal Chinese Alliance Church</title>
+      </Helmet>
       <Background>
         <Header className="max-w-6xl mx-auto">
           <div className="mx-auto text-white h-56 sm:h-64 md:h-128 xl:h-256 flex items-center">

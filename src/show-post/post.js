@@ -7,6 +7,7 @@ import React from "react"
 import Show from "../common/show"
 import gql from "graphql-tag"
 import { FaCertificate as FooterIcon } from "react-icons/fa"
+import { Helmet } from "react-helmet"
 import { Link } from "@reach/router"
 import { groupRoute, postRoute } from "../common/url-helper"
 import { useQuery } from "@apollo/react-hooks"
@@ -84,6 +85,9 @@ Post.Contents = ({ post, group }) => {
 
   return (
     <div>
+      <Helmet>
+        <title>{post.title ?? "Post"} | {group.name} | Montreal Chinese Alliance Church</title>
+      </Helmet>
       <Banner backgroundUrl={post.bannerUrl}>
         <div className="h-full w-full flex items-center">
           <Show show={post.title}>
