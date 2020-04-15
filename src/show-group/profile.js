@@ -3,6 +3,7 @@ import Loading from "../common/loading"
 import Post from "../show-post/post"
 import React from "react"
 import gql from "graphql-tag"
+import { Helmet } from "react-helmet"
 import { useQuery } from "@apollo/react-hooks"
 
 const LOAD_GROUP = gql`
@@ -49,6 +50,9 @@ const Profile = ({ slug }) => {
 Profile.Contents = ({ group }) => {
   return (
     <div>
+      <Helmet>
+        <title>{group.name} | Montreal Chinese Alliance Church</title>
+      </Helmet>
       <Header group={group} />
 
       <div className="container mx-auto mt-12">
