@@ -2,6 +2,7 @@ import Loading from "../common/loading"
 import React from "react"
 import Service from "./service"
 import gql from "graphql-tag"
+import { Helmet } from "react-helmet"
 import { useQuery } from "@apollo/react-hooks"
 
 const FETCH_NEXT_SERVICE = gql`
@@ -37,7 +38,12 @@ const Sunday = () => {
   const { group } = data
 
   return (
-    <Service.Contents service={group.bulletins.edges[0].node} />
+    <>
+      <Helmet>
+        <title>Sunday | Montreal Chinese Alliance Church</title>
+      </Helmet>
+      <Service.Contents service={group.bulletins.edges[0].node} />
+    </>
   )
 }
 

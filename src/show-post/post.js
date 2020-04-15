@@ -71,7 +71,14 @@ const Post = ({ id }) => {
 
   const { post } = data
 
-  return <Post.Contents post={post} group={post.group} />
+  return (
+    <>
+      <Helmet>
+        <title>{post.title ?? "Post"} | {post.group.name} | Montreal Chinese Alliance Church</title>
+      </Helmet>
+      <Post.Contents post={post} group={post.group} />
+    </>
+  )
 }
 
 Post.Contents = ({ post, group }) => {
@@ -85,9 +92,6 @@ Post.Contents = ({ post, group }) => {
 
   return (
     <div>
-      <Helmet>
-        <title>{post.title ?? "Post"} | {group.name} | Montreal Chinese Alliance Church</title>
-      </Helmet>
       <Banner backgroundUrl={post.bannerUrl}>
         <div className="h-full w-full flex items-center">
           <Show show={post.title}>
