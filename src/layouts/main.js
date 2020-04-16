@@ -6,10 +6,10 @@ import Show from "../common/show"
 const Main = ({ alert, children }) => {
   return (
     <div className="font-sans text-base text-gray-900">
-      <Show show={alert}>
-        {alert}
-      </Show>
       <div className="absolute w-full">
+        <Show show={alert}>
+          {alert}
+        </Show>
         <Header />
       </div>
       {children}
