@@ -97,6 +97,7 @@ Service.Contents = ({ service }) => {
                 <Moment
                   className="bg-white text-gray-900 px-2 py-1"
                   format="MMMM Do YYYY [at] h:mm a"
+                  parse="YYYY-MM-DD HH:mm:ss Z"
                   tz="America/Montreal">
                   {service.publishedAt}
                 </Moment>
