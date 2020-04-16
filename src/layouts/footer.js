@@ -4,7 +4,7 @@ import logo from "./logo.png"
 
 const Footer = () => {
   return (
-    <div className="text-center text-gray-500 mt-24">
+    <div className="text-center text-gray-500 mt-24 pb-12">
       <img src={logo} alt="" className="object-contain w-12 mx-auto mb-6 opacity-25" />
       <p className="uppercase tracking-widest text-sm">Montreal Chinese Alliance Church</p>
       <p className="text-sm">
@@ -15,7 +15,7 @@ const Footer = () => {
         <a href="https://mcac.herokuapp.com/login">Login</a>
       </p>
 
-      <p className="text-xs mt-6 mb-12 italic"> 
+      <p className="text-xs mt-6 italic"> 
         Because God loves us, we will love Jesus, love His people, and love the
         world, for Jesus' sake.
       </p>
