@@ -12,7 +12,7 @@ import { useQuery } from "@apollo/react-hooks"
 const Cover = styled.section`
   background-size: cover;
   background-position: bottom;
-  background-image: url(main-1920.jpg);
+  background-image: url(/main-1920.jpg);
 
   background-color: rgba(0, 0, 0, .25);
   background-blend-mode: multiply;
