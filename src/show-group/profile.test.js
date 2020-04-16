@@ -20,7 +20,10 @@ describe("Show Group/Profile", () => {
       slug: "english-service",
       targetAudience: "Members and seekers",
       posts: {
-        edges: posts.map(p => ({ node: p }))
+        edges: posts.map(p => ({ node: p })),
+        pageInfo: {
+          hasNextPage: false,
+        },
       },
     }
 
