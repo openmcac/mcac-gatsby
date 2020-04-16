@@ -22,7 +22,7 @@ const Header = ({ group }) => {
     <div>
       <Background bannerUrl={group.bannerUrl}>
         <Cover
-          className="h-48 md:h-56 lg:h-64 max-w-6xl mx-auto"
+          className="h-64 lg:h-128 max-w-6xl mx-auto"
           bannerUrl={group.bannerUrl}
         />
       </Background>
