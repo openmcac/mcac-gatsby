@@ -51,7 +51,7 @@ LandingPage.Contents = ({ groups }) => {
               <span className="line-through">13 Finchley</span>
               &nbsp;Online only
             </div>
-            <div className="md:border-l-2 md:pl-6 md:ml-6 sm:text-xl lg:text-2xl text-center">Live online Sundays at 9:30AM on <a className="font-semibold border-b border-dotted" href="http://live.mcac.church">YouTube</a></div>
+            <div className="md:border-l-2 md:pl-6 md:ml-6 sm:text-xl lg:text-2xl text-center">Live online Sundays at 9:30AM on <a className="font-semibold border-b border-dotted hover:text-gray-300" href="http://live.mcac.church">YouTube</a></div>
           </div>
         </div>
         <ChevronDownIcon className="text-4xl text-white absolute inset-x-0 mx-auto mb-2 bottom-0 opacity-50" />
