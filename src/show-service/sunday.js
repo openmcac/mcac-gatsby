@@ -82,14 +82,10 @@ const Sunday = () => {
           </WidescreenAspectRatio>
           <div className="mt-6">
             <div className="mb-2">
-              <span className="py-1 px-2 text-gray-100 bg-gray-900">
-                <a href={`https://www.youtube.com/watch?v=${youtubeId}`}>Open in YouTube</a>
-              </span>
+              <a className="py-1 px-2 text-gray-100 bg-gray-900 hover:bg-gray-800 hover:text-gray-100" href={`https://www.youtube.com/watch?v=${youtubeId}`}>Open in <strong>YouTube</strong></a>
             </div>
             <div className="mb-2">
-              <span className="py-1 px-2 text-gray-100 bg-gray-900">
-                <a href="https://fisherhall.mcac.church">Join us on Zoom after the service</a>
-              </span>
+              <a className="py-1 px-2 text-gray-100 bg-gray-900 hover:bg-gray-800 hover:text-gray-100" href="https://fisherhall.mcac.church">Join us on <strong>Zoom</strong> after the service</a>
             </div>
           </div>
         </div>
