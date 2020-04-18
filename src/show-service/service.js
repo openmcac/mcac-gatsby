@@ -3,6 +3,7 @@ import Loading from "../common/loading"
 import Markdown from "react-markdown"
 import Moment from "react-moment"
 import React from "react"
+import Show from "../common/show"
 import gql from "graphql-tag"
 import styled from "styled-components"
 import { Helmet } from "react-helmet"
@@ -17,7 +18,7 @@ const Header = styled.section`
   background-blend-mode: multiply;
 `
 
-const HeaderIcon = styled.div`
+export const HeaderIcon = styled.div`
   font-size: 72px;
 `
 
@@ -70,7 +71,7 @@ const Service = ({ id }) => {
   )
 }
 
-Service.Contents = ({ service }) => {
+Service.Contents = ({ service, livestream }) => {
   const serviceOrderRenderers = {
     listItem: ({ children }) => <li className="mb-10 text-sm md:text-xl">{children}</li>,
     strong: ({ children }) => <strong className="text-xl sm:text-2xl font-medium text-gray-900">{children}</strong>,
@@ -90,12 +91,12 @@ Service.Contents = ({ service }) => {
     <div>
       <Background>
         <Header className="max-w-6xl mx-auto">
-          <div className="mx-auto text-white h-56 sm:h-64 md:h-128 xl:h-256 flex items-center">
+          <div className="mx-auto text-gray-900 h-56 sm:h-64 md:h-128 xl:h-256 flex items-center">
             <div className="mx-auto">
-              <div className="bg-white text-gray-900 px-2 font-semibold tracking-wide text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl sm:tracking-wider mb-3 md:mb-6 lg:mb-8">{service.name}</div>
+              <div className="bg-gray-900 text-gray-100 px-2 font-semibold tracking-wide text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl sm:tracking-wider mb-3 md:mb-6 lg:mb-8">{service.name}</div>
               <div className="text-center text-sm sm:text-base md:text-lg lg:text-xl">
                 <Moment
-                  className="bg-white text-gray-900 px-2 py-1"
+                  className="bg-gray-900 text-gray-100 px-2 py-1"
                   format="MMMM Do YYYY [at] h:mm a"
                   tz="America/Montreal">
                   {service.publishedAt}
@@ -105,7 +106,8 @@ Service.Contents = ({ service }) => {
           </div>
         </Header>
       </Background>
-      <section className="max-w-2xl mx-auto -mt-12 mb-32">
+      <Show show={livestream}>{livestream}</Show>
+      <section className="max-w-2xl mx-auto mb-32 -mt-12">
         <HeaderIcon className="ml-4">
           <span role="img" aria-label="Service Order icon">📄</span>
         </HeaderIcon>
