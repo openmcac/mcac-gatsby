@@ -11,6 +11,10 @@ const FETCH_NEXT_SERVICE = gql`
     group(slug: "english-service") {
       id
       bulletins(first: 1) {
+        pageInfo {
+          endCursor
+          hasNextPage
+        }
         edges {
           node {
             id
