@@ -73,7 +73,7 @@ const Service = ({ id }) => {
   )
 }
 
-Service.Contents = ({ group, service, livestream }) => {
+Service.Contents = ({ service, livestream }) => {
   const serviceOrderRenderers = {
     listItem: ({ children }) => <li className="mb-10 text-sm md:text-xl">{children}</li>,
     strong: ({ children }) => <strong className="text-xl sm:text-2xl font-medium text-gray-900">{children}</strong>,
