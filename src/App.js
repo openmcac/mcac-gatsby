@@ -32,7 +32,7 @@ function App() {
           <LandingPage path="/" />
           <GroupProfile path="/:slug" />
           <Post path="/:group/:year/:month/:day/:id/:slug" />
-          <Service path="/:group/bulletin/:id" />
+          <Service path="/service/:id" />
           <Sunday path="/sunday" />
         </Router>
       </MainLayout>

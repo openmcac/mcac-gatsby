@@ -34,6 +34,7 @@ const buildRoute = template => new Route(template)
 
 export const groupRoute = buildRoute("/:slug")
 export const postRoute = buildRoute("/:group/:year/:month/:day/:id/:slug")
+export const serviceRoute = buildRoute("/service/:id")
 
 export const buildUrl = (template, params = {}) =>
   Object.keys(params).reduce((url, current) => {
