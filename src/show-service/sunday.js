@@ -1,16 +1,20 @@
+import InfiniteScroll from "react-infinite-scroller"
 import Loading from "../common/loading"
-import React from "react"
+import React, { useState } from "react"
 import Service, { HeaderIcon } from "./service"
+import Spinner from "../common/spinner"
 import gql from "graphql-tag"
 import styled from "styled-components"
+import update from "immutability-helper"
+import { FaCertificate as FooterIcon } from "react-icons/fa"
 import { Helmet } from "react-helmet"
-import { useQuery } from "@apollo/react-hooks"
+import { useApolloClient, useQuery } from "@apollo/react-hooks"
 
 const FETCH_NEXT_SERVICE = gql`
-  query sunday {
+  query sunday($after: String) {
     group(slug: "english-service") {
       id
-      bulletins(first: 1) {
+      bulletins(first: 1, after: $after) {
         pageInfo {
           endCursor
           hasNextPage
@@ -52,13 +56,29 @@ const YouTubeFrame = styled.iframe`
 `
 
 const Sunday = () => {
+  const [services, setServices] = useState([])
+  const [paginationInfo, setPaginationInfo] = useState(null)
   const { loading, error, data } = useQuery(FETCH_NEXT_SERVICE)
+  const client = useApolloClient()
 
   if (loading || error) {
     return <Loading />
   }
 
+
   const { group } = data
+
+  const handleLoadMore = async () => {
+    const { data: { group: { bulletins: newBulletins } } } = await client.query({
+      query: FETCH_NEXT_SERVICE,
+      variables: {
+        after: paginationInfo?.endCursor ?? group.bulletins.pageInfo.endCursor
+      },
+    })
+
+    setServices(update(services, { $push: newBulletins.edges.map(({ node }) => node) }))
+    setPaginationInfo(newBulletins.pageInfo)
+  }
 
   const youtubeId = "b4uS3zfoo4g"
 
@@ -103,6 +123,17 @@ const Sunday = () => {
         <title>Sunday | Montreal Chinese Alliance Church</title>
       </Helmet>
       <Service.Contents service={group.bulletins.edges[0].node} livestream={livestream} />
+      <InfiniteScroll
+        loadMore={handleLoadMore}
+        hasMore={paginationInfo?.hasNextPage ?? group.bulletins.pageInfo.hasNextPage}
+        loader={<div className="text-center text-gray-500 uppercase tracking-widest"><Spinner /></div>}>
+        {services.map(service => (
+          <div className="mt-24">
+            <div className="text-gray-200 text-2xl mt-12 sm:mt-16 md:mt-20 mb-24 sm:mb-32 md:mb-40"><FooterIcon className="mx-auto" /></div>
+            <Service.Contents service={service} />
+          </div>
+        ))}
+      </InfiniteScroll>
     </>
   )
 }
