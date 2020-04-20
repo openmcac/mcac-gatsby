@@ -8,6 +8,7 @@ import styled from "styled-components"
 import update from "immutability-helper"
 import { FaCertificate as FooterIcon } from "react-icons/fa"
 import { Helmet } from "react-helmet"
+import { serviceRoute } from "../common/url-helper"
 import { useApolloClient, useQuery } from "@apollo/react-hooks"
 
 const FETCH_NEXT_SERVICE = gql`
@@ -117,12 +118,15 @@ const Sunday = () => {
     </Livestream>
   )
 
+  const service = group.bulletins.edges[0].node
+
   return (
     <>
       <Helmet>
         <title>Sunday | Montreal Chinese Alliance Church</title>
+        <link rel="canonical" href={`${process.env.REACT_APP_WEB_HOST}${serviceRoute.url({ id: service.id })}`} />
       </Helmet>
-      <Service.Contents service={group.bulletins.edges[0].node} livestream={livestream} />
+      <Service.Contents service={service} livestream={livestream} />
       <InfiniteScroll
         loadMore={handleLoadMore}
         hasMore={paginationInfo?.hasNextPage ?? group.bulletins.pageInfo.hasNextPage}
