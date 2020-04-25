@@ -20,7 +20,7 @@ const Cover = styled.section`
 
 const LOAD_GROUPS = gql`
   query landingPage {
-    groups {
+    groups(organizationId: 1) {
       id
       slug
       name
