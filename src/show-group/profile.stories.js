@@ -1,4 +1,3 @@
-import "../tailwind.generated.css"
 import Profile from "./profile"
 import React from 'react';
 

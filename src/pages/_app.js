@@ -1,16 +1,13 @@
-import ApolloClient from 'apollo-boost'
-import GroupProfile from "./show-group/profile"
-import LandingPage from "./landing/landing-page"
-import MainLayout from "./layouts/main"
-import Post from "./show-post/post"
-import React from "react"
-import Service from "./show-service/service"
-import Sunday from "./show-service/sunday"
+import React from "react";
 import { ApolloProvider } from "@apollo/react-hooks"
-import { Router } from "@reach/router"
+import MainLayout from "../layouts/main"
+import withApollo from "../hooks/withApollo"
 
-function App() {
-  const client = new ApolloClient({ uri: process.env.REACT_APP_GRAPHQL_URL })
+import "antd/dist/antd.css"
+import "../styles.css"
+
+// This default export is required in a new `pages/_app.js` file.
+function MyApp({ Component, pageProps, apollo }) {
   const alert = (
     <div className="w-screen py-2 lg:py-4 text-sm bg-red-800 text-white border-b border-red-900">
       <div className="container px-2 text-center mx-auto">
@@ -24,18 +21,11 @@ function App() {
   )
 
   return (
-    <ApolloProvider client={client}>
+    <ApolloProvider client={apollo}>
       <MainLayout alert={alert}>
-        <Router>
-          <LandingPage path="/" />
-          <GroupProfile path="/:slug" />
-          <Post path="/:group/:year/:month/:day/:id/:slug" />
-          <Service path="/service/:id" />
-          <Sunday path="/sunday" />
-        </Router>
       </MainLayout>
     </ApolloProvider>
   )
 }
 
-export default App;
+export default withApollo(MyApp)

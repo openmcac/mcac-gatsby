@@ -1,4 +1,3 @@
-import "../tailwind.generated.css"
 import Post from "./post"
 import React from 'react';
 

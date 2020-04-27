@@ -7,8 +7,8 @@ import React from "react"
 import Show from "../common/show"
 import gql from "graphql-tag"
 import { FaCertificate as FooterIcon } from "react-icons/fa"
-import { Helmet } from "react-helmet"
-import { Link } from "@reach/router"
+import Helmet from 'next/head'
+import Link from "next/link"
 import { groupRoute, postRoute } from "../common/url-helper"
 import { useQuery } from "@apollo/react-hooks"
 
@@ -46,16 +46,19 @@ const Metadata = ({ post, group }) => {
       />
       <div className="ml-2 text-sm md:text-base">
         <div className="font-semibold tracking-wide text-gray-700">
-          <Link className="border-0" to={groupRoute.url({ slug: group.slug })}>
-            {group.name}
+          <Link href={groupRoute.url({ slug: group.slug })}>
+            <a className="border-0">
+              {group.name}
+            </a>
           </Link>
         </div>
         <Link
-          className="border-0"
-          to={postRoute.url({ group: group.slug, year: publishedAt.getFullYear(), month: publishedAt.getMonth() + 1, day: publishedAt.getDate(), id: post.id, slug: post.slug })}>
-          <Moment className="text-gray-500" format="MMMM Do YYYY [at] h:mma" tz="America/Montreal">
-            {post.publishedAt}
-          </Moment>
+          href={postRoute.url({ group: group.slug, year: publishedAt.getFullYear(), month: publishedAt.getMonth() + 1, day: publishedAt.getDate(), id: post.id, slug: post.slug })}>
+            <a className="border-0">
+              <Moment className="text-gray-500" format="MMMM Do YYYY [at] h:mma" tz="America/Montreal">
+                {post.publishedAt}
+              </Moment>
+            </a>
         </Link>
       </div>
     </div>

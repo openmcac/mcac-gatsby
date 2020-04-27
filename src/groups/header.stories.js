@@ -1,4 +1,3 @@
-import "../tailwind.generated.css"
 import Header from "./header"
 import React from 'react';
 

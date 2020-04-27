@@ -6,8 +6,8 @@ import React from "react"
 import Show from "../common/show"
 import gql from "graphql-tag"
 import styled from "styled-components"
-import { Helmet } from "react-helmet"
-import { Link } from "@reach/router"
+import Helmet from 'next/head'
+import Link from "next/link"
 import { serviceRoute } from "../common/url-helper"
 import { useQuery } from "@apollo/react-hooks"
 
@@ -54,7 +54,7 @@ const FETCH_SERVICE = gql`
   }
 `
 
-const Service = ({ id }) => {
+const Service = ({ query: { id } }) => {
   const { loading, error, data } = useQuery(FETCH_SERVICE, { variables: { id } })
 
   if (loading || error) {
@@ -96,10 +96,10 @@ Service.Contents = ({ service, livestream }) => {
           <div className="mx-auto text-gray-900 h-56 sm:h-64 md:h-128 xl:h-256 flex items-center">
             <div className="mx-auto">
               <div className="text-center">
-                <Link
-                  className="hover:text-gray-100 border-0 bg-gray-900 text-gray-100 px-2 font-semibold tracking-wide text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl sm:tracking-wider mb-3 md:mb-6 lg:mb-8"
-                  to={serviceRoute.url({ id: service.id })}>
-                  {service.name}
+                <Link href={serviceRoute.url({ id: service.id })}>
+                  <a className="hover:text-gray-100 border-0 bg-gray-900 text-gray-100 px-2 font-semibold tracking-wide text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl sm:tracking-wider mb-3 md:mb-6 lg:mb-8">
+                    {service.name}
+                  </a>
                 </Link>
               </div>
               <div className="text-center text-sm sm:text-base md:text-lg lg:text-xl">

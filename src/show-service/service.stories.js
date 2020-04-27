@@ -1,4 +1,3 @@
-import "../tailwind.generated.css"
 import React from 'react';
 import Service from "./service"
 
