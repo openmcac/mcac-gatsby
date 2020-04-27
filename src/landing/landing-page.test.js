@@ -1,6 +1,19 @@
 import LandingPage from "./landing-page"
 import React from "react"
 import { render } from '@testing-library/react'
+import { CloudinaryContext } from "cloudinary-react"
+
+
+const AllTheProviders = ({ children }) => {
+  return (
+    <CloudinaryContext cloudName="test">
+      {children}
+    </CloudinaryContext>
+  )
+}
+
+const customRender = (ui, options) =>
+  render(ui, { wrapper: AllTheProviders, ...options })
 
 describe("Landing Page", () => {
   it("shows the correct data", () => {
@@ -19,7 +32,9 @@ describe("Landing Page", () => {
       },
     ]
 
-    const { container, getByAltText, getByText, debug } = render(<LandingPage.Contents groups={groups} />)
+    const { container, getByAltText, getByText, debug } = customRender(
+      <LandingPage.Contents groups={groups} />
+    )
 
     expect(getByText(/Loved, Loving./i)).toBeInTheDocument()
     expect(getByText(/13 Finchley/i)).toBeInTheDocument()
@@ -29,7 +44,7 @@ describe("Landing Page", () => {
 
     groups.forEach(group => {
       expect(getByText(group.name)).toBeInTheDocument()
-      expect(container.querySelector(`[src="${group.profilePictureUrl}"]`))
+      expect(container.querySelector(`[src="http://res.cloudinary.com/test/image/fetch/c_fill,f_auto,h_384,r_max,w_384/${group.profilePictureUrl}"]`))
         .toBeInTheDocument()
     })
   })
