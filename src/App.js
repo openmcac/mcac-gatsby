@@ -10,6 +10,7 @@ import Service from "./show-service/service"
 import Sunday from "./show-service/sunday"
 import { ApolloProvider } from "@apollo/react-hooks"
 import { Router } from "@reach/router"
+import { CloudinaryContext } from "cloudinary-react"
 
 function App() {
   const client = new ApolloClient({ uri: process.env.REACT_APP_GRAPHQL_URL })
@@ -27,15 +28,17 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      <MainLayout alert={alert}>
-        <Router>
-          <LandingPage path="/" />
-          <GroupProfile path="/:slug" />
-          <Post path="/:group/:year/:month/:day/:id/:slug" />
-          <Service path="/service/:id" />
-          <Sunday path="/sunday" />
-        </Router>
-      </MainLayout>
+      <CloudinaryContext cloudName={process.env.REACT_APP_CLOUDINARY_ID}>
+        <MainLayout alert={alert}>
+          <Router>
+            <LandingPage path="/" />
+            <GroupProfile path="/:slug" />
+            <Post path="/:group/:year/:month/:day/:id/:slug" />
+            <Service path="/service/:id" />
+            <Sunday path="/sunday" />
+          </Router>
+        </MainLayout>
+      </CloudinaryContext>
     </ApolloProvider>
   )
 }
