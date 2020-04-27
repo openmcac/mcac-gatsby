@@ -1,19 +1,6 @@
 import LandingPage from "./landing-page"
 import React from "react"
-import { render } from '@testing-library/react'
-import { CloudinaryContext } from "cloudinary-react"
-
-
-const AllTheProviders = ({ children }) => {
-  return (
-    <CloudinaryContext cloudName="test">
-      {children}
-    </CloudinaryContext>
-  )
-}
-
-const customRender = (ui, options) =>
-  render(ui, { wrapper: AllTheProviders, ...options })
+import { render } from "../test-utils"
 
 describe("Landing Page", () => {
   it("shows the correct data", () => {
@@ -32,7 +19,7 @@ describe("Landing Page", () => {
       },
     ]
 
-    const { container, getByAltText, getByText, debug } = customRender(
+    const { container, getByAltText, getByText, debug } = render(
       <LandingPage.Contents groups={groups} />
     )
 
