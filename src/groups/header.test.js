@@ -1,6 +1,6 @@
 import Header from "./header"
 import React from "react"
-import { render } from '@testing-library/react'
+import { render } from "../test-utils"
 
 describe("Group Header", () => {
   it("displays the group information", () => {

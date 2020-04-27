@@ -1,6 +1,6 @@
 import React from "react"
 import Profile from "./profile"
-import { render } from '@testing-library/react'
+import { render } from "../test-utils"
 
 describe("Show Group/Profile", () => {
   it("Shows the group information", () => {

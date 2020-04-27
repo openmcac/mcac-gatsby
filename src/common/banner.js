@@ -10,20 +10,28 @@ const Background = styled.div`
   ${({ bannerUrl }) => {
     if (bannerUrl) {
       return `
-        background-image: url(${bannerUrl});
+        background-image: url(http://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_ID}/image/fetch/g_auto:subject,c_fill,h_384,w_750/${bannerUrl});
         background-size: cover;
         background-position: center;
         background-color: rgba(0, 0, 0, .60);
         background-blend-mode: multiply;
+
+        @media (min-width: 1024px) {
+          background-image: url(http://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_ID}/image/fetch/g_auto:subject,c_fill,h_512,w_2048/${bannerUrl});
+        }
       `
     }
   }}
 `
 
 const Cover = styled.div`
-  background-image: url(${({ bannerUrl }) => bannerUrl});
+  background-image: url(${({ bannerUrl }) => `http://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_ID}/image/fetch/g_auto:subject,c_fill,h_384,w_750/${bannerUrl}`});
   background-size: cover;
   background-position: center;
+
+  @media (min-width: 1024px) {
+    background-image: url(${({ bannerUrl }) => `http://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_ID}/image/fetch/g_auto:subject,c_fill,h_512,w_2048/${bannerUrl}`});
+  }
 `
 
 const Banner = ({ backgroundUrl, children }) => {

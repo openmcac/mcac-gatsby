@@ -4,6 +4,7 @@ import Show from "../common/show"
 import gql from "graphql-tag"
 import styled from "styled-components"
 import { FaChevronDown as ChevronDownIcon } from "react-icons/fa"
+import { Image, Transformation } from "cloudinary-react"
 import { Link } from "@reach/router"
 import { TiLocation as LocationIcon } from "react-icons/ti"
 import { groupRoute } from "../common/url-helper"
@@ -75,11 +76,13 @@ LandingPage.Contents = ({ groups }) => {
               <li key={index} className="flex flex-col mb-8 sm:mb-16 sm:w-1/2 md:w-1/3 mx-auto">
                 <Link to={groupRoute.url({ slug: group.slug })} className="border-0">
                   <Show show={group.profilePictureUrl}>
-                    <img
+                    <Image
+                      publicId={group.profilePictureUrl} 
                       className="bg-gray-200 rounded-full object-cover w-48 h-48 mx-auto mb-4"
-                      src={group.profilePictureUrl}
                       alt={group.name}
-                    />
+                      type="fetch">
+                      <Transformation width="384" height="384" radius="max" crop="fill" fetchFormat="auto" />
+                    </Image>
                   </Show>
                   <Show show={!group.profilePictureUrl}>
                     <div className="bg-gray-200 rounded-full object-cover w-48 h-48 mx-auto mb-4" />
