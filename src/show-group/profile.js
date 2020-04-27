@@ -5,7 +5,7 @@ import Post from "../show-post/post"
 import React, { useState } from "react"
 import Spinner from "../common/spinner"
 import gql from "graphql-tag"
-import { Helmet } from "react-helmet"
+import Helmet from 'next/head'
 import { useApolloClient, useQuery } from "@apollo/react-hooks"
 
 const LOAD_GROUP = gql`
@@ -42,7 +42,7 @@ const LOAD_GROUP = gql`
   }
 `
 
-const Profile = ({ slug }) => {
+const Profile = ({ query: { slug } }) => {
   const { data, error, loading } = useQuery(LOAD_GROUP, { variables: { slug } })
   const client = useApolloClient()
 

@@ -7,7 +7,7 @@ import gql from "graphql-tag"
 import styled from "styled-components"
 import update from "immutability-helper"
 import { FaCertificate as FooterIcon } from "react-icons/fa"
-import { Helmet } from "react-helmet"
+import Helmet from 'next/head'
 import { serviceRoute } from "../common/url-helper"
 import { useApolloClient, useQuery } from "@apollo/react-hooks"
 
