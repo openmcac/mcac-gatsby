@@ -8,6 +8,7 @@ import Show from "../common/show"
 import gql from "graphql-tag"
 import { FaCertificate as FooterIcon } from "react-icons/fa"
 import { Helmet } from "react-helmet"
+import { Image, Transformation } from "cloudinary-react"
 import { Link } from "@reach/router"
 import { groupRoute, postRoute } from "../common/url-helper"
 import { useQuery } from "@apollo/react-hooks"
@@ -39,11 +40,13 @@ const Metadata = ({ post, group }) => {
 
   return (
     <div className="flex flex-row items-center">
-      <img
+      <Image
+        publicId={group.profilePictureUrl} 
         className="rounded-full h-16 md:h-20 w-16 md:w-20"
-        src={group.profilePictureUrl}
         alt=""
-      />
+        type="fetch">
+        <Transformation width="160" height="160" radius="max" crop="thumb" fetchFormat="auto" />
+      </Image>
       <div className="ml-2 text-sm md:text-base">
         <div className="font-semibold tracking-wide text-gray-700">
           <Link className="border-0" to={groupRoute.url({ slug: group.slug })}>
