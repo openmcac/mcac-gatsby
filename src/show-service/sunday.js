@@ -81,7 +81,7 @@ const Sunday = () => {
     setPaginationInfo(newBulletins.pageInfo)
   }
 
-  const youtubeId = "mYFvezr5MIg"
+  const youtubeId = "tK7c1Qcx1bw"
 
   const livestream = (
     <Livestream className="pb-12 sm:pb-32 bg-black">
