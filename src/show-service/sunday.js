@@ -92,7 +92,7 @@ const Sunday = () => {
         <div className="text-center text-gray-600 pt-20">
           <div className="mb-2 md:mb-4">
             <span className="md:text-xl py-1 px-2 text-gray-100 bg-gray-900">
-              Join our Facebook Watch Party at 7 pm
+              Tune in <strong>LIVE</strong> on Sunday at 9:30 am
             </span>
           </div>
           <WidescreenAspectRatio>
@@ -108,6 +108,9 @@ const Sunday = () => {
           <div className="mt-6">
             <div className="mb-2">
               <a className="py-1 px-2 text-gray-100 bg-gray-900 hover:bg-gray-800 hover:text-gray-100" href={`https://www.youtube.com/watch?v=${youtubeId}`}>Open in <strong>YouTube</strong></a>
+            </div>
+            <div className="mb-2">
+              <a className="py-1 px-2 text-gray-100 bg-gray-900 hover:bg-gray-800 hover:text-gray-100" href="https://fisherhall.mcac.church">Join us on <strong>Zoom</strong> after the service</a>
             </div>
           </div>
         </div>
