@@ -49,8 +49,7 @@ LandingPage.Contents = ({ groups }) => {
           <div className="flex flex-col md:flex-row items-center">
             <div className="mb-6 md:mb-0 tracking-wide text-lg sm:text-xl lg:text-2xl flex items-center">
               <LocationIcon className="inline mr-2" />
-              <span className="line-through">13 Finchley</span>
-              &nbsp;Online only
+              <a className="font-semibold border-b border-dotted hover:text-gray-300" href="https://www.google.ca/maps/place/13+Rue+Finchley,+Hampstead,+QC+H3X+2Z4/@45.4791032,-73.6348992,17z/data=!3m1!4b1!4m2!3m1!1s0x4cc917507e7efe21:0x334fc9316d4951e3">13 Finchley</a>
             </div>
             <div className="md:border-l-2 md:pl-6 md:ml-6 sm:text-xl lg:text-2xl text-center">Live online Sundays at 9:30AM on <a className="font-semibold border-b border-dotted hover:text-gray-300" href="http://live.mcac.church">YouTube</a></div>
           </div>
