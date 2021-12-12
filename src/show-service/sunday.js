@@ -81,7 +81,7 @@ const Sunday = () => {
     setPaginationInfo(newBulletins.pageInfo)
   }
 
-  const youtubeId = "uGwy40o47eE"
+  const youtubeId = "RFhyQHAIclk"
 
   const livestream = (
     <Livestream className="pb-12 sm:pb-32 bg-black">
@@ -108,9 +108,6 @@ const Sunday = () => {
           <div className="mt-6">
             <div className="mb-2">
               <a className="py-1 px-2 text-gray-100 bg-gray-900 hover:bg-gray-800 hover:text-gray-100" href={`https://www.youtube.com/watch?v=${youtubeId}`}>Open in <strong>YouTube</strong></a>
-            </div>
-            <div className="mb-2">
-              <a className="py-1 px-2 text-gray-100 bg-gray-900 hover:bg-gray-800 hover:text-gray-100" href="https://fisherhall.mcac.church">Join us on <strong>Zoom</strong> after the service</a>
             </div>
           </div>
         </div>
