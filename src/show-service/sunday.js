@@ -109,6 +109,9 @@ const Sunday = () => {
             <div className="mb-2">
               <a className="py-1 px-2 text-gray-100 bg-gray-900 hover:bg-gray-800 hover:text-gray-100" href={`https://www.youtube.com/watch?v=${youtubeId}`}>Open in <strong>YouTube</strong></a>
             </div>
+            <div className="mb-2">
+              <a className="py-1 px-2 text-gray-100 bg-gray-900 hover:bg-gray-800 hover:text-gray-100" href="https://fisherhall.mcac.church">Join us on <strong>Zoom</strong> after the service</a>
+            </div>
           </div>
         </div>
       </div>
