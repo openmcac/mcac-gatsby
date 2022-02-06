@@ -43,19 +43,6 @@ const Livestream = styled.section`
   background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 `
 
-const WidescreenAspectRatio = styled.div`
- position: relative;
- padding-top:56.25%;
-`
-
-const YouTubeFrame = styled.iframe`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height:100%;
-`
-
 const Sunday = () => {
   const [services, setServices] = useState([])
   const [paginationInfo, setPaginationInfo] = useState(null)
@@ -81,8 +68,6 @@ const Sunday = () => {
     setPaginationInfo(newBulletins.pageInfo)
   }
 
-  const youtubeId = "M8h0CArj3T8"
-
   const livestream = (
     <Livestream className="pb-12 sm:pb-32 bg-black">
       <div className="max-w-2xl mx-auto">
@@ -95,22 +80,12 @@ const Sunday = () => {
               Tune in <strong>LIVE</strong> on Sunday at 9:30 am
             </span>
           </div>
-          <WidescreenAspectRatio>
-            <YouTubeFrame
-              width="100%"
-              height="100%"
-              src={`https://www.youtube-nocookie.com/embed/${youtubeId}`}
-              frameborder="0"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
-            </YouTubeFrame>
-          </WidescreenAspectRatio>
+          <a href="https://fisherhall.mcac.church">
+            <img className="px-2 w-full" alt="Service Thumbnail" src="https://mcac.s3.amazonaws.com/bulletins/ef7060ad-3e25-4dd7-8113-d119ea133ab1-thumbnail.png" />
+          </a>
           <div className="mt-6">
             <div className="mb-2">
-              <a className="py-1 px-2 text-gray-100 bg-gray-900 hover:bg-gray-800 hover:text-gray-100" href={`https://www.youtube.com/watch?v=${youtubeId}`}>Open in <strong>YouTube</strong></a>
-            </div>
-            <div className="mb-2">
-              <a className="py-1 px-2 text-gray-100 bg-gray-900 hover:bg-gray-800 hover:text-gray-100" href="https://fisherhall.mcac.church">Join us on <strong>Zoom</strong> after the service</a>
+              <a className="py-1 px-2 text-gray-100 bg-gray-900 hover:bg-gray-800 hover:text-gray-100" href="https://fisherhall.mcac.church">Join us on <strong>Zoom</strong></a>
             </div>
           </div>
         </div>
