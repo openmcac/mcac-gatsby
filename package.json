@@ -11,7 +11,7 @@
     "graphql": "^15.0.0",
     "graphql-tag": "^2.10.3",
     "immutability-helper": "^3.0.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "moment-timezone": "^0.5.28",
     "path-to-regexp": "^6.1.0",
     "query-string": "^6.12.0",
