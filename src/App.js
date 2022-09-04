@@ -14,19 +14,11 @@ import { CloudinaryContext } from "cloudinary-react"
 
 function App() {
   const client = new ApolloClient({ uri: process.env.REACT_APP_GRAPHQL_URL })
-  const alert = (
-    <div className="w-screen py-2 lg:py-4 text-sm bg-yellow-300 text-yellow-700 border-b border-yellow-900">
-      <div className="container px-2 text-center mx-auto">
-        Service is now open to the public. Seating is limited so <a className="hover:text-yellow-900 hover:border-yellow-900 border-yellow-600" href="https://reopening.mcac.church">register now to reserve a spot.</a>
-        {" "}Our services can also be <a className="hover:text-yellow-900 hover:border-yellow-900 border-yellow-600" href="http://live.mcac.church">streamed on Sundays</a> at 9:30am.
-      </div>
-    </div>
-  )
 
   return (
     <ApolloProvider client={client}>
       <CloudinaryContext cloudName={process.env.REACT_APP_CLOUDINARY_ID}>
-        <MainLayout alert={alert}>
+        <MainLayout>
           <Router>
             <LandingPage path="/" />
             <GroupProfile path="/:slug" />
